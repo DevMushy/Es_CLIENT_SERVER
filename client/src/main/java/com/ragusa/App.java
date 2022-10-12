@@ -1,25 +1,33 @@
 package com.ragusa;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.InetAddress;
 import java.net.Socket;
 
 public class App 
 {
     public static void main( String[] args ) throws Exception
     {
-        Socket s = new Socket(InetAddress.getLocalHost(), 3000);
-        PrintWriter pr = new PrintWriter(s.getOutputStream());
-        pr.println("ci sono");
-        pr.flush();
+        Socket s = new Socket("localhost", 3000);
+        
+        // per parlare
+        PrintWriter pr = new PrintWriter(s.getOutputStream(), true);
+        
+        // per ascoltare
+        BufferedReader br = new BufferedReader(new InputStreamReader(s.getInputStream()));
 
-        InputStreamReader in = new InputStreamReader(s.getInputStream());
-        BufferedReader br = new BufferedReader(in);
+        // per la tastiera
+        BufferedReader tastiera = new BufferedReader(new InputStreamReader(System.in));
 
-        String str = br.readLine();
-        System.out.println("Server: " + str);
+        pr.println("Eccomi");
+        System.out.println(br.readLine());
+        pr.println(tastiera.readLine()); 
+        System.out.println(br.readLine()); 
+        pr.println(tastiera.readLine()); 
+        System.out.println("il tuo BMI è:" + br.readLine()); 
+        System.out.println(br.readLine());
+        pr.println("Grazie e ciao");
+        
         s.close();
     }
 }
