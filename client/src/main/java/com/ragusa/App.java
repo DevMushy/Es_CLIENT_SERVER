@@ -23,9 +23,6 @@ public class App
         System.out.println(br.readLine());
         pr.println(tastiera.readLine()); 
         System.out.println(br.readLine()); 
-        pr.println(tastiera.readLine()); 
-        System.out.println("il tuo BMI è:" + br.readLine()); 
-        System.out.println(br.readLine());
         pr.println("Grazie e ciao");
         
         s.close();
