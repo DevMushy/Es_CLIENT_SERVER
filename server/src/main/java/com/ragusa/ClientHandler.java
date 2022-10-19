@@ -35,7 +35,7 @@ public class ClientHandler extends Thread{
             pr.println("Ciao, come ti chiami?"); 
             String nome = br.readLine(); 
             System.out.println("Utente: " + nome);
-            pr.println("benvenuto " + nome.toUpperCase() + " sei l'utente n: " + id + "comandi disponibili: ora,nome,data,id,fine"); 
+            pr.println("benvenuto " + nome.toUpperCase() + " sei l'utente n: " + id + " Comandi disponibili: ora,nome,data,id,fine"); 
 
             boolean StartStop = true;
             
@@ -52,7 +52,7 @@ public class ClientHandler extends Thread{
                         pr.println("ore: " + time);
                     break;
                     case ("id") :
-                        pr.println("sei l'utente con l'id: " + getId());
+                        pr.println("sei l'utente con l'id: " + id);
                     break;
                     case ("nome") :
                         pr.println("sei l'utente con il nome: " + getName());
@@ -60,6 +60,9 @@ public class ClientHandler extends Thread{
                     case ("fine") :
                         StartStop = false;
                         pr.println("fine");
+                    break;
+                    default:
+                        pr.println("comando non valido");
                     break;
                 }
             }
