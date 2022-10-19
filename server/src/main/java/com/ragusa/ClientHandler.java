@@ -6,11 +6,13 @@ import java.net.Socket;
 
 public class ClientHandler extends Thread{
 
-    Socket s;
-    static int x;
+    private Socket s;
+    private static int x = 1;
+    private int id;
 
     public ClientHandler(Socket s){
         this.s = s;
+        id = x++;
     }
 
     public void run(){
@@ -28,7 +30,7 @@ public class ClientHandler extends Thread{
             pr.println("Ciao, come ti chiami?"); 
             String nome = br.readLine(); 
             System.out.println("Utente: " + nome);
-            pr.println("benvenuto " + nome.toUpperCase() + " sei l'utente n: " + x++); 
+            pr.println("benvenuto " + nome.toUpperCase() + " sei l'utente n: " + id); 
             
             System.out.println(br.readLine());
             
