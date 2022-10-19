@@ -9,6 +9,8 @@ public class App
     public static void main( String[] args ) throws Exception
     {
         Socket s = new Socket("localhost", 3000);
+        boolean StartStop = true;
+        String stringa;
         
         // per parlare
         PrintWriter pr = new PrintWriter(s.getOutputStream(), true);
@@ -23,7 +25,18 @@ public class App
         System.out.println(br.readLine());
         pr.println(tastiera.readLine()); 
         System.out.println(br.readLine()); 
-        pr.println("Grazie e ciao");
+
+        do {
+            pr.println(tastiera.readLine());
+            stringa = br.readLine();
+            if(stringa.equals("fine")){
+                StartStop = false;
+            }else{
+                System.out.println(stringa);
+            }
+        } while (StartStop);
+        
+        System.out.println("client chiuso");
         
         s.close();
     }

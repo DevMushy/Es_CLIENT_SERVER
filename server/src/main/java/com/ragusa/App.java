@@ -15,6 +15,7 @@ public class App
             ClientHandler c = new ClientHandler(s);
             c.start();
         }
+        ss.close();
     }
 
 }
